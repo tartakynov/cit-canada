@@ -28,10 +28,10 @@ class CitizenshipTrackerConfigFlow(ConfigFlow, domain=DOMAIN):
             success = await try_auth(user_input)
             if success:
                 await self.async_set_unique_id(
-                    f"citizenship-application-tracker-{user_input[CONF_UCI].lower()}"
+                    f"{DOMAIN}-{user_input[CONF_UCI]}"
                 )
                 self._abort_if_unique_id_configured()
-                return self.async_create_entry(title=CONF_TITLE, data=user_input)
+                return self.async_create_entry(title=f"{DOMAIN}-{user_input[CONF_UCI]}", data=user_input)
             else:
                 errors["base"] = "auth_error"
 
