@@ -1,5 +1,5 @@
 {
-  "domain": "citizenship_application_tracker",
+  "domain": "cit-canada",
   "name": "Citizenship Application Tracker",
   "codeowners": [
     "@tartakynov"

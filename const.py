@@ -1,4 +1,4 @@
-DOMAIN = "citizenship_application_tracker"
+DOMAIN = "cit-canada"
 CLIENT_ID = "client_id"
 CONF_UCI = "uci"
 CONF_PWD = "pwd"
