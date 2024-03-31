@@ -1,6 +1,7 @@
 {
   "domain": "cit-canada",
-  "name": "Citizenship Application Tracker",
+  "name": "Canadian Citizenship Application Tracker",
+  "version": "0.1.0",
   "codeowners": [
     "@tartakynov"
   ],
