@@ -1,0 +1,6 @@
+DOMAIN = "citizenship_application_tracker"
+CLIENT_ID = "client_id"
+CONF_UCI = "uci"
+CONF_PWD = "pwd"
+CONF_TITLE = "citizenship-application-tracker"
+COORDINATOR_NAME = "citizenship application tracker"

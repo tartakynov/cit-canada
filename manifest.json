@@ -1,0 +1,17 @@
+{
+  "domain": "citizenship_application_tracker",
+  "name": "Citizenship Application Tracker",
+  "codeowners": [
+    "@tartakynov"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/tartakynov/cit-canada",
+  "iot_class": "cloud_polling",
+  "loggers": [
+    "boto3"
+  ],
+  "requirements": [
+    "requests==2.31.0",
+    "boto3==1.34.70"
+  ]
+}
