@@ -5,10 +5,10 @@ from homeassistant.const import Platform, CONF_CLIENT_ID
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-from api_client import ApiClient
-from const import CONF_UCI, CONF_PWD, COORDINATOR_NAME
-from coordinator import CitizenshipTrackerCoordinator
-from sensor import CitizenshipTrackerSensor
+from .api_client import ApiClient
+from .const import CONF_UCI, CONF_PWD, COORDINATOR_NAME
+from .coordinator import CitizenshipTrackerCoordinator
+from .sensor import CitizenshipTrackerSensor
 
 _LOGGER = logging.getLogger(__name__)
 

@@ -8,8 +8,8 @@ from homeassistant.components.sensor import (
 )
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from api_client import ApiClient
-from coordinator import CitizenshipTrackerCoordinator
+from .api_client import ApiClient
+from .coordinator import CitizenshipTrackerCoordinator
 
 
 class CitizenshipTrackerSensor(CoordinatorEntity, SensorEntity):
