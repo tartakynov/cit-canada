@@ -1,4 +1,5 @@
 import datetime
+import logging
 
 from dateutil import tz
 from homeassistant.components.sensor import (
@@ -6,10 +7,30 @@ from homeassistant.components.sensor import (
     SensorEntity,
     SensorEntityDescription,
 )
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import Platform
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .api_client import ApiClient
+from .const import DOMAIN
 from .coordinator import CitizenshipTrackerCoordinator
+
+_LOGGER = logging.getLogger(__name__)
+
+PLATFORMS = [Platform.SENSOR]
+
+
+async def async_setup_entry(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    async_add_entities: AddEntitiesCallback,
+) -> None:
+    coord: CitizenshipTrackerCoordinator = hass.data[DOMAIN][config_entry.entry_id]
+    async_add_entities(
+        [CitizenshipTrackerSensor(coord)]
+    )
 
 
 class CitizenshipTrackerSensor(CoordinatorEntity, SensorEntity):

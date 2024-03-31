@@ -1,4 +1,4 @@
-homeassistant==2024.3.3
+homeassistant==2024.2.2
 voluptuous~=0.13.1
 requests==2.31.0
 boto3==1.34.70
