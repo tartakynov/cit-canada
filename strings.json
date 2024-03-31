@@ -5,6 +5,7 @@
         "title": "Citizenship Application Tracker",
         "description": "Enter the tracker website credentials",
         "data": {
+          "client_id": "Client ID",
           "uci": "UCI",
           "pwd": "Password"
         }
