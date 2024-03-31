@@ -8,7 +8,6 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -18,8 +17,6 @@ from .const import DOMAIN
 from .coordinator import CitizenshipTrackerCoordinator
 
 _LOGGER = logging.getLogger(__name__)
-
-PLATFORMS = [Platform.SENSOR]
 
 
 async def async_setup_entry(
