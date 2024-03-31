@@ -14,6 +14,8 @@ _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS = [Platform.SENSOR]
 
+DOMAIN = const.DOMAIN
+
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
     client_id = config_entry.data.get(CONF_CLIENT_ID)
