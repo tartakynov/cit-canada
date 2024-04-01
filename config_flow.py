@@ -31,7 +31,7 @@ class CitizenshipTrackerConfigFlow(ConfigFlow, domain=DOMAIN):
                     f"{DOMAIN}-{user_input[CONF_UCI]}"
                 )
                 self._abort_if_unique_id_configured()
-                return self.async_create_entry(title=f"uci-{user_input[CONF_UCI][:4]}", data=user_input)
+                return self.async_create_entry(title=f"uci-{user_input[CONF_UCI][-4:]}", data=user_input)
             else:
                 errors["base"] = "auth_error"
 
