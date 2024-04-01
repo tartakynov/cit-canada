@@ -27,11 +27,10 @@ class CitizenshipTrackerConfigFlow(ConfigFlow, domain=DOMAIN):
         if user_input is not None:
             success = await try_auth(user_input)
             if success:
-                await self.async_set_unique_id(
-                    f"{DOMAIN}-{user_input[CONF_UCI]}"
-                )
+                title = f"uci-{user_input[CONF_UCI][-4:]}"
+                await self.async_set_unique_id(title)
                 self._abort_if_unique_id_configured()
-                return self.async_create_entry(title=f"uci-{user_input[CONF_UCI][-4:]}", data=user_input)
+                return self.async_create_entry(title=title, data=user_input)
             else:
                 errors["base"] = "auth_error"
 
