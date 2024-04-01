@@ -4,7 +4,7 @@ import voluptuous as vol
 from homeassistant.config_entries import ConfigFlow
 
 from .api_client import ApiClient
-from .const import DOMAIN, CONF_CLIENT_ID, CONF_PWD, CONF_UCI, CONF_TITLE
+from .const import DOMAIN, CONF_CLIENT_ID, CONF_PWD, CONF_UCI
 
 _LOGGER = logging.getLogger(__name__)
 

@@ -23,10 +23,11 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         hass, tracker, COORDINATOR_NAME
     )
 
+    await coord.async_config_entry_first_refresh()
+
     hass.data.setdefault(DOMAIN, {})
     hass.data[DOMAIN][config_entry.entry_id] = coord
 
-    await coord.async_config_entry_first_refresh()
     await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
 
     return True
