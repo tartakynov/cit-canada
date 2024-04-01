@@ -22,6 +22,7 @@ class CitizenshipTrackerCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self):
         try:
+            _LOGGER.info(f"Updating data for {self.config_entry.entry_id.title()}")
             await self.tracker.update()
         except Exception as ex:
             raise UpdateFailed(f"Error fetching {self.name} data: {ex}") from ex
