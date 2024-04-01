@@ -4,17 +4,16 @@ import voluptuous as vol
 from homeassistant.config_entries import ConfigFlow
 
 from .api_client import ApiClient
-from .const import DOMAIN, CONF_CLIENT_ID, CONF_PWD, CONF_UCI
+from .const import DOMAIN, CONF_PWD, CONF_UCI
 
 _LOGGER = logging.getLogger(__name__)
 
 
 async def try_auth(data):
-    client_id = data.get(CONF_CLIENT_ID)
     uci = data.get(CONF_UCI)
     pwd = data.get(CONF_PWD)
 
-    tracker = ApiClient(client_id=client_id, uci=uci, pwd=pwd)
+    tracker = ApiClient(uci=uci, pwd=pwd)
     success = await tracker.update()
     return success
 
@@ -36,7 +35,6 @@ class CitizenshipTrackerConfigFlow(ConfigFlow, domain=DOMAIN):
 
         data_schema = vol.Schema(
             {
-                vol.Required(CONF_CLIENT_ID): str,
                 vol.Required(CONF_UCI): str,
                 vol.Required(CONF_PWD): str,
             }

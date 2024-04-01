@@ -1,7 +1,7 @@
 import logging
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import Platform, CONF_CLIENT_ID
+from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
 from .api_client import ApiClient
@@ -14,11 +14,10 @@ PLATFORMS = [Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
-    client_id = config_entry.data.get(CONF_CLIENT_ID)
     uci = config_entry.data.get(CONF_UCI)
     pwd = config_entry.data.get(CONF_PWD)
 
-    tracker = ApiClient(client_id=client_id, uci=uci, pwd=pwd)
+    tracker = ApiClient(uci=uci, pwd=pwd)
     coord = CitizenshipTrackerCoordinator(
         hass, tracker, COORDINATOR_NAME
     )

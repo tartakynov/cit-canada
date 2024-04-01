@@ -14,10 +14,10 @@ def _get_last_updated_remote(token: str):
     return resp['lastUpdated']
 
 
-def _auth(client_id: str, uci: str, pwd: str):
+def _auth(uci: str, pwd: str):
     client = boto3.client('cognito-idp', 'ca-central-1')
     resp = client.initiate_auth(
-        ClientId=client_id,
+        ClientId="mtnf1qn9p739g2v8aij2anpju",
         AuthFlow='USER_PASSWORD_AUTH',
         AuthParameters={
             "USERNAME": uci,
@@ -29,14 +29,13 @@ def _auth(client_id: str, uci: str, pwd: str):
 
 
 class ApiClient(object):
-    def __init__(self, client_id: str, uci: str, pwd: str):
-        self.__client_id = client_id
+    def __init__(self, uci: str, pwd: str):
         self.__uci = uci
         self.__pwd = pwd
         self.last_updated_epoch_ms = 0
 
     async def update(self):
-        token = await asyncio.to_thread(_auth, self.__client_id, self.__uci, self.__pwd)
+        token = await asyncio.to_thread(_auth, self.__uci, self.__pwd)
         if token:
             self.last_updated_epoch_ms = await asyncio.to_thread(_get_last_updated_remote, token)
             return True

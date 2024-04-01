@@ -1,5 +1,4 @@
 DOMAIN = "cit-canada"
-CONF_CLIENT_ID = "client_id"
 CONF_UCI = "uci"
 CONF_PWD = "pwd"
 COORDINATOR_NAME = "citizenship application tracker"
