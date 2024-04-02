@@ -1,4 +1,4 @@
-# Canadian Citizenship Application Tracker for Home Assistant
+# Canadian Citizenship Application Tracker for Home Assistant 🇨🇦
 
 This Home Assistant integration allows you to track the last update time of your Canadian citizenship application
 directly from your Home Assistant instance. It automatically checks for updates every 6 hours.
