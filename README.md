@@ -60,4 +60,4 @@ and `<your_device>` with your mobile device identifier in Home Assistant.
 
 ## Tracking Frequency
 
-This integration checks for updates on your Canadian citizenship application every 6 hours.
+This integration checks for updates on your Canadian citizenship application every 4 hours.

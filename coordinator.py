@@ -8,7 +8,7 @@ from .api_client import ApiClient
 
 _LOGGER = logging.getLogger(__name__)
 
-DEFAULT_UPDATE_INTERVAL = timedelta(hours=6)
+DEFAULT_UPDATE_INTERVAL = timedelta(hours=4)
 
 
 class CitizenshipTrackerCoordinator(DataUpdateCoordinator):
