@@ -48,7 +48,7 @@ alias: Notify on Citizenship Application Update
 description: Sends a notification to my phone when the citizenship application status updates.
 trigger:
   - platform: state
-    entity_id: sensor.uci_1234_last_update_time
+    entity_id: sensor.uci_1234_profile_updated_at
 action:
   - service: notify.mobile_app_<your_device>
     data:
