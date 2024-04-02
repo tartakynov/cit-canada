@@ -19,8 +19,8 @@
   },
   "entity": {
     "sensor": {
-      "app_updated_at": {
-        "name": "Citizenship application updated at"
+      "profile_updated_at": {
+        "name": "Profile updated at"
       },
       "data_synced_at": {
         "name": "Data synced at"

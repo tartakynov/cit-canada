@@ -35,7 +35,7 @@ navigate to the "Canadian Citizenship Application Tracker" device within the Hom
 
 Upon successful authentication, two new entities will be added to your Home Assistant:
 
-- `sensor.uci_1234_app_updated_at`: Tracks the last update time of your citizenship application, including "ghost updates." The `1234` in the entity ID represents the last 4 digits of your UCI.
+- `sensor.uci_1234_profile_updated_at`: Tracks the last update time of your citizenship application, including "ghost updates." The `1234` in the entity ID represents the last 4 digits of your UCI.
 - `sensor.uci_1234_data_synced_at`: Tracks the time when the data was last synced with the citizenship tracker website. The `1234` in the entity ID also represents the last 4 digits of your UCI.
 
 ### Automations

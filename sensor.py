@@ -18,8 +18,8 @@ from .coordinator import CitizenshipTrackerCoordinator
 _LOGGER = logging.getLogger(__name__)
 
 
-def sensor_fn_application_updated_at(tracker: ApiClient) -> datetime.datetime:
-    return tracker.application_updated_at
+def sensor_fn_profile_updated_at(tracker: ApiClient) -> datetime.datetime:
+    return tracker.profile_updated_at
 
 
 def sensor_fn_data_synced_at(tracker: ApiClient) -> datetime.datetime:
@@ -35,10 +35,10 @@ async def async_setup_entry(
     async_add_entities([
         CitizenshipTrackerSensor(
             coordinator=coord,
-            value_fn=sensor_fn_application_updated_at,
+            value_fn=sensor_fn_profile_updated_at,
             description=SensorEntityDescription(
-                key="app_updated_at",
-                translation_key="app_updated_at",
+                key="profile_updated_at",
+                translation_key="profile_updated_at",
                 device_class=SensorDeviceClass.TIMESTAMP,
             ),
         ),

@@ -34,7 +34,7 @@ def _auth(uci: str, pwd: str):
 
 
 class ApiClient(object):
-    application_updated_at: datetime.datetime
+    profile_updated_at: datetime.datetime
 
     data_synced_at: datetime.datetime
 
@@ -48,7 +48,7 @@ class ApiClient(object):
         token = await asyncio.to_thread(_auth, self.__uci, self.__pwd)
         if token:
             epoch_ms = await asyncio.to_thread(_get_last_updated_remote, token)
-            self.application_updated_at = datetime.datetime.fromtimestamp(epoch_ms / 1000, tz.UTC)
+            self.profile_updated_at = datetime.datetime.fromtimestamp(epoch_ms / 1000, tz.UTC)
             self.data_synced_at = datetime.datetime.now(tz.UTC)
             return True
 
