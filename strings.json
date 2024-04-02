@@ -19,8 +19,11 @@
   },
   "entity": {
     "sensor": {
-      "timestamp": {
-        "name": "Last update time"
+      "app_updated_at": {
+        "name": "Citizenship application updated at"
+      },
+      "data_synced_at": {
+        "name": "Data synced at"
       }
     }
   }

@@ -1,7 +1,7 @@
 import datetime
 import logging
+from typing import Any, Callable
 
-from dateutil import tz
 from homeassistant.components.sensor import (
     SensorDeviceClass, SensorEntityDescription, SensorEntity,
 )
@@ -18,34 +18,60 @@ from .coordinator import CitizenshipTrackerCoordinator
 _LOGGER = logging.getLogger(__name__)
 
 
+def sensor_fn_application_updated_at(tracker: ApiClient) -> datetime.datetime:
+    return tracker.application_updated_at
+
+
+def sensor_fn_data_synced_at(tracker: ApiClient) -> datetime.datetime:
+    return tracker.data_synced_at
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     coord: CitizenshipTrackerCoordinator = hass.data[DOMAIN][config_entry.entry_id]
-    async_add_entities([CitizenshipTrackerSensor(coord)])
+    async_add_entities([
+        CitizenshipTrackerSensor(
+            coordinator=coord,
+            value_fn=sensor_fn_application_updated_at,
+            description=SensorEntityDescription(
+                key="app_updated_at",
+                translation_key="app_updated_at",
+                device_class=SensorDeviceClass.TIMESTAMP,
+            ),
+        ),
+        CitizenshipTrackerSensor(
+            coordinator=coord,
+            value_fn=sensor_fn_data_synced_at,
+            description=SensorEntityDescription(
+                key="data_synced_at",
+                translation_key="data_synced_at",
+                device_class=SensorDeviceClass.TIMESTAMP,
+            ),
+        ),
+    ])
 
 
 class CitizenshipTrackerSensor(CoordinatorEntity, SensorEntity):
     _tracker: ApiClient
 
-    def __init__(self, coordinator: CitizenshipTrackerCoordinator):
+    def __init__(self,
+                 coordinator: CitizenshipTrackerCoordinator,
+                 value_fn: Callable[[ApiClient], Any],
+                 description: SensorEntityDescription):
         super().__init__(coordinator)
-        self.entity_description = SensorEntityDescription(
-            key="timestamp",
-            translation_key="timestamp",
-            device_class=SensorDeviceClass.TIMESTAMP,
-        )
+        self.entity_description = description
         self._tracker = coordinator.tracker
         self._attr_unique_id = f"{coordinator.config_entry.title}-{self.entity_description.key}"
         self._attr_has_entity_name = True
         self._attr_device_info = device_info(coordinator.config_entry)
+        self._value_fn = value_fn
 
     @property
     def native_value(self):
-        epoch = self._tracker.last_updated_epoch_ms / 1000
-        return datetime.datetime.fromtimestamp(epoch, tz.UTC)
+        return self._value_fn(self._tracker)
 
 
 def device_info(config_entry: ConfigEntry) -> DeviceInfo:
