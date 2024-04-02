@@ -1,7 +1,10 @@
 import asyncio
+import logging
 
 import boto3
 import requests
+
+_LOGGER = logging.getLogger(__name__)
 
 
 def _get_last_updated_remote(token: str):
@@ -35,6 +38,8 @@ class ApiClient(object):
         self.last_updated_epoch_ms = 0
 
     async def update(self):
+        _LOGGER.info(f"Updating data for {self.__uci[-4:]}")
+
         token = await asyncio.to_thread(_auth, self.__uci, self.__pwd)
         if token:
             self.last_updated_epoch_ms = await asyncio.to_thread(_get_last_updated_remote, token)
