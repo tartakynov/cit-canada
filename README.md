@@ -49,6 +49,11 @@ description: Sends a notification to my phone when the citizenship application s
 trigger:
   - platform: state
     entity_id: sensor.uci_1234_profile_updated_at
+condition:
+  - condition: template
+    value_template: >
+      {{ trigger.from_state.state not in ['unknown', 'none', 'unavailable'] and
+         trigger.to_state.state not in ['unknown', 'none', 'unavailable'] }}
 action:
   - service: notify.mobile_app_<your_device>
     data:
