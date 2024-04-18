@@ -79,4 +79,5 @@ def device_info(config_entry: ConfigEntry) -> DeviceInfo:
         entry_type=DeviceEntryType.SERVICE,
         identifiers={(DOMAIN, config_entry.entry_id)},
         name=config_entry.title,
+        configuration_url="https://tracker-suivi.apps.cic.gc.ca/",
     )

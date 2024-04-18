@@ -1,0 +1,12 @@
+{
+  "entity": {
+    "sensor": {
+      "data_synced_at": {
+        "default": "mdi:clock-check"
+      },
+      "profile_updated_at": {
+        "default": "mdi:account-clock"
+      }
+    }
+  }
+}
